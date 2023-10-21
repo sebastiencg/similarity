@@ -3,7 +3,7 @@ import requests
 
 url = "https://trouve-mot.fr/api/random"
 
-model = spacy.load('en_core_web_lg')
+model = spacy.load('fr_core_news_sm')
 
 
 def jeu():
