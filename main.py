@@ -18,16 +18,20 @@ def jeu():
             i += 1
         jeton_mot_donne = model(mot_donne)
 
-        similarite = jeton_mot_donne.similarity(jeton_mot_secret)
+        mot_donne_vector = model(mot_donne)
 
-        if similarite == 1.0:
-            print('Félicitations ! Vous avez gagné ;)!')
-            i += 1
+        if mot_donne_vector.has_vector:
+            similarite = jeton_mot_donne.similarity(jeton_mot_secret)
+
+            if similarite == 1.0:
+                print('Félicitations ! Vous avez gagné ;)!')
+                i += 1
+            else:
+                message = "Le mot '" + jeton_mot_donne.text + "' est similaire à " + str(
+                    similarite * 100) + "% au mot secret."
+                print(message)
         else:
-            message = "Le mot '" + jeton_mot_donne.text + "' est similaire à " + str(
-                similarite * 100) + "% au mot secret."
-            print(message)
-
+            print('mots inconnue ')
 
 
 def start_game_function():
